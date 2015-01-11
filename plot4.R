@@ -7,13 +7,13 @@
 ##   - Global Reactive Power
 
 source("shared.R")
-data <- GetPowerConsumptionData()  # Defined in "shared.R"
+power.data <- GetPowerConsumptionData()  # Defined in "shared.R"
 
 png(filename="plot4.png", width=480, height=480, units="px")
 
 par(mfrow=c(2, 2))
 
-with(data, {
+with(power.data, {
   plot(Global_active_power, type="n", xlab="", xaxt="n",
        ylab="Global Active Power")
   lines(Global_active_power)
