@@ -1,16 +1,16 @@
-## Common data loading function for all four parts of Course Project 1 in the
-## Coursera Exploratory Data Analysis course.
+## Common functions for all four parts of Course Project 1 in the Coursera
+## Exploratory Data Analysis course.
 ##
 ##     https://www.coursera.org/course/exdata
-##
-## The zip file that was used to create the graphs in this repository was
-## retrieved on January 10, 2014 at 14:55 (America/Toronto) and has the
-## following sha256 checksum:
-##
-##     9f84b46ade8a2d8e1286ec4b2b6c2987a45a755c59f263be3b3b3d10dfbda3ff
 
 GetPowerConsumptionData <- function() {
   ## Load and return data for Course Project 1.
+  ##
+  ## The zip file that was used to create the graphs in this repository was
+  ## retrieved on January 10, 2014 at 14:55 (America/Toronto) and has the
+  ## following sha256 checksum:
+  ##
+  ##     9f84b46ade8a2d8e1286ec4b2b6c2987a45a755c59f263be3b3b3d10dfbda3ff
   ##
   ## Args:
   ##   None.
@@ -37,4 +37,20 @@ GetPowerConsumptionData <- function() {
   data <- read.csv(unz(data.file.path, file.from.zip), sep=";", na.strings="?",
                   colClasses=c("character", "character", rep("numeric", 7)))
   subset(data, Date %in% c("1/2/2007", "2/2/2007"))
+}
+
+
+DrawXAxis <- function() {
+  ## Draw the X axis used in plots 2, 3 and 4
+  ##
+  ## This axis shows the values Thu, Fri and Sat instead of numbers at values
+  ## 0, 1440 and 2880.
+  ##
+  ## Args:
+  ##   None.
+  ##
+  ## Returns:
+  ##   The numeric vector c(0, 1440, 2880)
+
+  axis(1, at=c(0, 1440, 2880), labels=c("Thu", "Fri", "Sat"))
 }

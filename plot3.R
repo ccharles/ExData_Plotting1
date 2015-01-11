@@ -1,10 +1,13 @@
-source("get_data.R")
-data <- GetPowerConsumptionData()
+## Generate a plot of Energy Sub Metering values using data provided by
+## shared.R and save it to "plot3.png".
+
+source("shared.R")
+data <- GetPowerConsumptionData()  # Defined in "shared.R"
 
 png(filename="plot3.png", width=480, height=480, units="px")
 
 plot(data$Sub_metering_1, type="n", xlab="", xaxt="n", ylab="Energy sub metering")
-axis(1, at=c(0, 1440, 2880), labels=c("Thu", "Fri", "Sat"))
+DrawXAxis()  # Defined in "shared.R"
 
 lines(data$Sub_metering_1)
 
